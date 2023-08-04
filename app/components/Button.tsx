@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, outline, smal
       className={`
       relative
       disabled:opacity-70
-      disabled:cursor-not-allowed
+      disabled:cursor-not-alloweds
       rounded-lg
       hover:opacity-80
       transition

@@ -2,6 +2,7 @@
 import React, { ReactElement, useCallback, useEffect, useState } from "react";
 import { IoMdClose } from 'react-icons/io';
 import Button from "../Button";
+import useRegisterModel from "@/app/hooks/useRegisterModel";
 
 interface ModalProps {
     isOpen?: boolean;
@@ -17,6 +18,7 @@ interface ModalProps {
 }
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, title, body, footer, actionLabel, disabled, secondaryAction, secondaryActionLabel }) => {
     const [showModel, setShowModel] = useState(isOpen)
+    const registerModel = useRegisterModel()
 
     useEffect(() => {
         setShowModel(isOpen)
@@ -49,7 +51,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, title, body, f
                         <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                             <div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px]">
                                 <button className="p-1 border-0 hover:opacity-70 transition absolute left-9">
-                                    <IoMdClose size={10} />
+                                    <IoMdClose size={10} onClick={registerModel.onClose}/>
                                 </button>
                                 <div className="text-lg font-semibold">{title}</div>
                             </div>
@@ -58,11 +60,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, title, body, f
                                 <div className="flex flex-row items-center gap-4 w-full">
                                     {
                                         secondaryAction && secondaryActionLabel && (
-                                            <Button label={secondaryActionLabel} onClick={handleSumbit} disabled={disabled} outline />
+                                            <Button label={secondaryActionLabel} onClick={handleSumbit} disabled outline />
                                         )
                                     }
-                                    <Button disabled={disabled} label={actionLabel} onClick={handleSumbit} />
+                                    <Button disabled label={actionLabel} onClick={handleSumbit} />
                                 </div>
+                                {footer}
                             </div>
                         </div>
                     </div>
