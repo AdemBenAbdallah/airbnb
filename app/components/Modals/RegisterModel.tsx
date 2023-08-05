@@ -2,7 +2,7 @@
 
 import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from 'react-icons/fc'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import useRegisterModel from "@/app/hooks/useRegisterModel"
 import axios from "axios"
@@ -82,14 +82,14 @@ const RegisterModel = () => {
       <hr />
       <Button
         outline
-        disabled
+        disabled={isLoading}
         label="Continue with Google"
         icon={FcGoogle}
         onClick={() => { }}
       />
       <Button
         outline
-        disabled
+        disabled={isLoading}
         label="Continue with Google"
         icon={AiFillGithub}
         onClick={() => { }}

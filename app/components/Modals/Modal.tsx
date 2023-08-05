@@ -43,6 +43,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, title, body, f
     }, [disabled, secondaryAction])
 
     if (!isOpen) return null;
+    console.log(disabled)
     return (
         <>
             <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-neutral-800/70">
@@ -60,10 +61,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, title, body, f
                                 <div className="flex flex-row items-center gap-4 w-full">
                                     {
                                         secondaryAction && secondaryActionLabel && (
-                                            <Button label={secondaryActionLabel} onClick={handleSumbit} disabled outline />
+                                            <Button label={secondaryActionLabel} onClick={handleSumbit} disabled={disabled ?? false} outline />
                                         )
                                     }
-                                    <Button disabled label={actionLabel} onClick={handleSumbit} />
+                                    <Button disabled={disabled ?? false} label={actionLabel} onClick={handleSumbit} />
                                 </div>
                                 {footer}
                             </div>
