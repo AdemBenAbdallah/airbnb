@@ -39,6 +39,7 @@ const RegisterModel = () => {
         registerModel.onClose()
       })
       .catch((err) => {
+        console.log(err)
         toast.error('somthing wrong')
       })
       .finally(() => {
