@@ -18,7 +18,6 @@ interface ModalProps {
 }
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, title, body, footer, actionLabel, disabled, secondaryAction, secondaryActionLabel }) => {
     const [showModel, setShowModel] = useState(isOpen)
-    const registerModel = useRegisterModel()
 
     useEffect(() => {
         setShowModel(isOpen)
@@ -43,7 +42,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, title, body, f
     }, [disabled, secondaryAction])
 
     if (!isOpen) return null;
-    console.log(disabled)
+
     return (
         <>
             <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-neutral-800/70">
@@ -52,7 +51,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, title, body, f
                         <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                             <div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px]">
                                 <button className="p-1 border-0 hover:opacity-70 transition absolute left-9">
-                                    <IoMdClose size={10} onClick={registerModel.onClose}/>
+                                    <IoMdClose size={10} onClick={handleClose}/>
                                 </button>
                                 <div className="text-lg font-semibold">{title}</div>
                             </div>
