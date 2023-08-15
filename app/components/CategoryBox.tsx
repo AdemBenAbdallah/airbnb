@@ -48,7 +48,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
             onClick={handleClick}
             className={`
          flex
-         flex-row
+         flex-col
          items-center
          justify-center
          gap-2

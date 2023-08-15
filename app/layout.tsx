@@ -8,6 +8,7 @@ import RegisterModel from './components/Modals/RegisterModel'
 import ToasterProvider from './providers/ToasterProvider'
 import LoginModel from './components/Modals/LoginModel'
 import getCurrentUser from './actions/getCurrentUser'
+import RentModeal from './components/Modals/RentModeal'
 
 const font = Nunito({
   subsets: ['latin']
@@ -30,11 +31,14 @@ export default async function RootLayout({
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <RentModeal />
           <LoginModel />
           <RegisterModel />
-          <Navbar currentUser={currentUser}/>
+          <Navbar currentUser={currentUser} />
         </ClientOnly>
-        {children}
+        <div className="pb-20 pt-28">
+          {children}
+        </div>
       </body>
     </html>
   )

@@ -8,6 +8,7 @@ import useRegisterModel from '@/app/hooks/useRegisterModel'
 import useLoginModel from '@/app/hooks/useLoginModel'
 import { User } from '@prisma/client'
 import { signOut } from 'next-auth/react'
+import useRentModal from '@/app/hooks/useRentModal'
 
 
 interface NavbarProps {
@@ -16,13 +17,20 @@ interface NavbarProps {
 
 const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
+
     const registerModel = useRegisterModel()
     const loginModel = useLoginModel()
+    const renModal = useRentModal()
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value: boolean) => !value)
     }, [])
-    console.log(currentUser)
+
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            loginModel.onOpen()
+        }else renModal.onOpen()
+    }, [currentUser, loginModel, renModal])
     return (
         <div className="relative">
             <div className="
@@ -31,7 +39,9 @@ const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
                 items-center
                 gap-3
             ">
-                <div className="
+                <div
+                    onClick={onRent}
+                    className="
                     hidden
                     md:block
                     text-sm
@@ -91,27 +101,27 @@ const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
                                 currentUser ? (
                                     <>
                                         <MenuItem
-                                            onClick={() => {}}
+                                            onClick={() => { }}
                                             label="My trips"
                                         />
                                         <MenuItem
-                                             onClick={() => {}}
+                                            onClick={() => { }}
                                             label="My favorites"
                                         />
                                         <MenuItem
-                                             onClick={() => {}}
+                                            onClick={() => { }}
                                             label="My reservations"
                                         />
                                         <MenuItem
-                                             onClick={() => {}}
+                                            onClick={() => { }}
                                             label="My properties"
                                         />
                                         <MenuItem
-                                             onClick={() => {}}
+                                            onClick={renModal.onOpen}
                                             label="Airbnb my home"
                                         />
                                         <MenuItem
-                                             onClick={() => signOut()}
+                                            onClick={() => signOut()}
                                             label="Logout"
                                         />
                                     </>

@@ -3,7 +3,7 @@
 import { signIn } from 'next-auth/react'
 import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from 'react-icons/fc'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import useRegisterModel from "@/app/hooks/useRegisterModel"
 import useLoginModel from "@/app/hooks/useLoginModel"
@@ -57,6 +57,12 @@ const LoginModel = () => {
     })
   }
 
+  const toggle = useCallback(() =>{
+    loginModel.onClose()
+    registerModel.onOpen()
+
+  },[registerModel,loginModel])
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title='Welcome back' subtitle="Login to your account!" />
@@ -98,12 +104,12 @@ const LoginModel = () => {
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
           <div>
-            Create an account?
+            First time using Airbnb?
           </div>
           <div
-            onClick={registerModel.onClose}
-            className="text-neutral-500 cursor-pointer hover-underline">
-            Sign Up
+            onClick={toggle}
+            className="text-neutral-500 cursor-pointer hover:underline">
+            Create an account
           </div>
         </div>
       </div> 
