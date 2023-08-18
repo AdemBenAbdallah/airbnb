@@ -3,8 +3,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation';
 
-import { SafeListing, SafeUser } from '@/app/types';
-import { Reservation } from '@prisma/client';
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
 
 import ListingHead from '@/app/components/listings/ListingHead';
 import { categories } from '@/app/components/navbar/Categories';
@@ -24,7 +23,7 @@ const initialDateRange = {
     key: 'selection'
 }
 interface ListingClientProps {
-    reservations?: Reservation[];
+    reservations?: SafeReservation[];
     listing: SafeListing & {
         user: SafeUser
     }
@@ -39,7 +38,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ reservations = [], listin
 
         reservations.forEach((reservation) => {
             const range = eachDayOfInterval({
-                start: new Date(reservation.starDate),
+                start: new Date(reservation.startDate),
                 end: new Date(reservation.endDate)
             })
 
@@ -60,7 +59,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ reservations = [], listin
 
         setIsLoading(true)
 
-        axios.post('/api/reservation', {
+        axios.post('/api/reservations', {
             totalPrice,
             startDate: dateRange.startDate,
             endDate: dateRange.endDate,
