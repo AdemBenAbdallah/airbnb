@@ -1,5 +1,7 @@
+'use client'
+
 import React, { useCallback, useState } from "react";
-import { SafeListing, SafeReservation, SafeUser } from "../types"
+import { SafeListing, SafeUser } from "../types"
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
