@@ -9,6 +9,7 @@ import useLoginModel from '@/app/hooks/useLoginModel'
 import { signOut } from 'next-auth/react'
 import useRentModal from '@/app/hooks/useRentModal'
 import { SafeUser } from '@/app/types'
+import { useRouter } from 'next/navigation'
 
 
 interface NavbarProps { 
@@ -16,6 +17,7 @@ interface NavbarProps {
 }
 
 const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
+    const router = useRouter()
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const registerModel = useRegisterModel()
@@ -101,19 +103,19 @@ const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
                                 currentUser ? (
                                     <>
                                         <MenuItem
-                                            onClick={() => { }}
+                                            onClick={() => router.push('/trips')}
                                             label="My trips"
                                         />
                                         <MenuItem
-                                            onClick={() => { }}
+                                            onClick={() => router.push('/favorites')}
                                             label="My favorites"
                                         />
                                         <MenuItem
-                                            onClick={() => { }}
+                                            onClick={() => router.push('/reservations')}
                                             label="My reservations"
                                         />
                                         <MenuItem
-                                            onClick={() => { }}
+                                            onClick={() => router.push('/properties')}
                                             label="My properties"
                                         />
                                         <MenuItem

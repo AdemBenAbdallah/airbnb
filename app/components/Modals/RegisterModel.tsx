@@ -41,6 +41,7 @@ const RegisterModel = () => {
     axios.post('/api/register', data)
       .then(() => {
         registerModel.onClose()
+        loginModel.onOpen()
       })
       .catch((err) => {
         console.log(err)
