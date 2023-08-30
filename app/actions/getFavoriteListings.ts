@@ -12,7 +12,7 @@ export default async function getFavoriteListings() {
     const favorites = await prisma.listing.findMany({
       where: {
         id: {
-          in: { ...(currentUser.favoriteIds || []) },
+          in: currentUser.favoriteIds || [],
         },
       },
     });
@@ -22,6 +22,7 @@ export default async function getFavoriteListings() {
       createdAt: favorite.createdAt.toISOString(),
     }));
 
+    
     return safeFavorites;
   } catch (error: any) {
     throw new Error(error)

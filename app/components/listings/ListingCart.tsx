@@ -25,7 +25,7 @@ const ListingCart: React.FC<ListingCartProps> = ({
   const router = useRouter()
   const { getByValue } = useCountries()
 
-  const location = getByValue(data.localionValue)
+  const location = getByValue(data.locationValue)
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
