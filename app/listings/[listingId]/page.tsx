@@ -30,6 +30,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
         <ClientOnly>
             <ListingClient
                 listing={listing}
+                // @ts-ignore
                 reservations={reservations}
                 currentUser={currentUser}
             />
