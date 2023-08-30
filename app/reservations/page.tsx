@@ -1,48 +1,47 @@
-import getCurrentUser from "../actions/getCurrentUser"
-import getReservations from "../actions/getReservations"
-import ClientOnly from "../components/ClientOnly"
-import EmptyState from "../components/EmptyState"
-import ReservationsClient from "./ReservationsClient"
 
+import EmptyState from "@/app/components/EmptyState";
+import ClientOnly from "@/app/components/ClientOnly";
 
-const page = async () => {
-    const currentUser = await getCurrentUser()
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import getReservations from "@/app/actions/getReservations";
 
-    if (!currentUser) {
-        return (
-            <ClientOnly>
-                <EmptyState
-                    title="Unauthorized"
-                    subtitle="Please login"
-                />
-            </ClientOnly>
-        )
-    }
+import TripsClient from "./ReservationsClient";
 
-    const reservations = await getReservations({
-        authorId: currentUser.id
-    })
+const ReservationsPage = async () => {
+  const currentUser = await getCurrentUser();
 
-    if (reservations.length == 0) {
-        return(
-            <ClientOnly>
-                <EmptyState
-                    title="No reservations found"
-                    subtitle="Looks like you have no reservations on your properties"
-                />
-            </ClientOnly>
-        )
-    }
-
+  if (!currentUser) {
     return (
-        <ClientOnly>
-            <ReservationsClient
-                // @ts-ignore
-                reservations={reservations}
-                currentUser={currentUser}
-            />
-        </ClientOnly>
+      <ClientOnly> 
+        <EmptyState
+          title="Unauthorized"
+          subtitle="Please login"
+        />
+      </ClientOnly>
     )
-}
+  }
 
-export default page
+  const reservations = await getReservations({ authorId: currentUser.id });
+
+  if (reservations.length === 0) {
+    return (
+      <ClientOnly>
+        <EmptyState
+          title="No reservations found"
+          subtitle="Looks like you have no reservations on your properties."
+        />
+      </ClientOnly>
+    );
+  }
+
+  return (
+    <ClientOnly>
+      <TripsClient
+        reservations={reservations}
+        currentUser={currentUser}
+      />
+    </ClientOnly>
+  );
+}
+ 
+export default ReservationsPage;

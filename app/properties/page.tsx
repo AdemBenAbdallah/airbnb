@@ -1,48 +1,43 @@
-import getCurrentUser from "../actions/getCurrentUser"
-import getListings from "../actions/getListings"
 
-import ClientOnly from "../components/ClientOnly"
-import EmptyState from "../components/EmptyState"
-import PropertiesClient from "./PropertiesClient"
+import EmptyState from "@/app/components/EmptyState";
+import ClientOnly from "@/app/components/ClientOnly";
 
-const page = async () => {
-    const currentUser = await getCurrentUser()
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import getListings from "@/app/actions/getListings";
 
-    if (!currentUser) {
-        return (
-            <ClientOnly>
-                <EmptyState
-                    title="Unauthorized"
-                    subtitle="Please login"
-                />
-            </ClientOnly>
-        )
-    }
+import PropertiesClient from "./PropertiesClient";
 
-    const listings = await getListings({
-        userId: currentUser.id
-    })
+const PropertiesPage = async () => {
+  const currentUser = await getCurrentUser();
 
-    if (listings.length === 0) {
-        return (
-            <ClientOnly>
-                <EmptyState
-                    title="No properties found"
-                    subtitle="Looks like you havent reserved any properties."
-                />
-            </ClientOnly>
-        )
-    }
+  if (!currentUser) {
+    return <EmptyState
+      title="Unauthorized"
+      subtitle="Please login"
+    />
+  }
 
-    
+  const listings = await getListings({ userId: currentUser.id });
+
+  if (listings.length === 0) {
     return (
-        <ClientOnly>
-            <PropertiesClient
-                listings={listings}
-                currentUser={currentUser}
-            />
-        </ClientOnly>
-    )
-}
+      <ClientOnly>
+        <EmptyState
+          title="No properties found"
+          subtitle="Looks like you have no properties."
+        />
+      </ClientOnly>
+    );
+  }
 
-export default page
+  return (
+    <ClientOnly>
+      <PropertiesClient
+        listings={listings}
+        currentUser={currentUser}
+      />
+    </ClientOnly>
+  );
+}
+ 
+export default PropertiesPage;
