@@ -1,4 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Airbnb Clone
+
+Welcome to the Airbnb Clone, a versatile platform that allows users to browse property listings, make reservations, manage their trips, and search for accommodations worldwide.
+
+## Table of Contents
+
+- [Features](#features)
+- [Demo](#demo)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **Property Listings:** Browse a wide range of property listings with detailed descriptions, images, and pricing information.
+- **Reservations:** Easily book accommodations, view reservation details, and manage your bookings.
+- **Trip Management:** Plan and organize your trips by viewing your past and upcoming reservations.
+- **Search Capabilities:** Find properties based on location, price range, accommodation type, and more.
+- **User Accounts:** Create and manage your user profile, including personal information and preferences.
+- **Host Features:** Hosts can list their properties, manage bookings, and interact with guests.
+
+## Demo
+
+For a live demonstration of the Airbnb Clone, visit [Demo Link](https://ekri.vercel.app).
 
 ## Getting Started
 
