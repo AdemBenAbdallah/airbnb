@@ -28,7 +28,7 @@ For a live demonstration of the Airbnb Clone, visit [Demo Link](https://ekri.ver
 
 ## Schema Diagram
 
-![diagram](https://github.com/AdemBenAbdallah/Clores/assets/96244394/e251ee32-7854-4dfc-b1e7-5828fe89a32e)
+![airbnb](https://github.com/AdemBenAbdallah/airbnb/assets/96244394/a7108abb-292e-4e5c-96b8-f796d0b8430a)
 
 
 Above is the schema diagram illustrating the database structure of the Clores Plant Sell Website.
