@@ -26,6 +26,16 @@ Welcome to the Airbnb Clone, a versatile platform that allows users to browse pr
 
 For a live demonstration of the Airbnb Clone, visit [Demo Link](https://ekri.vercel.app).
 
+## Schema Diagram
+
+![diagram](https://github.com/AdemBenAbdallah/Clores/assets/96244394/e251ee32-7854-4dfc-b1e7-5828fe89a32e)
+
+
+Above is the schema diagram illustrating the database structure of the Clores Plant Sell Website.
+
+
+Above is the schema diagram illustrating the database structure of the Clores Plant Sell Website.
+
 ## Getting Started
 
 First, run the development server:
